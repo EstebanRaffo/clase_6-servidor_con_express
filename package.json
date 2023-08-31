@@ -1,0 +1,20 @@
+{
+  "name": "clase_6-servidor_con_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EstebanRaffo/clase_6-servidor_con_express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EstebanRaffo/clase_6-servidor_con_express/issues"
+  },
+  "homepage": "https://github.com/EstebanRaffo/clase_6-servidor_con_express#readme"
+}
