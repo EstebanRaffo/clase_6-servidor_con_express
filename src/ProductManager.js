@@ -1,6 +1,6 @@
-const fs = require('fs');
+const fs = import('fs');
 
-class ProductManager{
+export default class ProductManager{
 
     constructor(path){
         this.filePath = path
@@ -218,7 +218,7 @@ const operations = async ()=>{
         console.log(error.message);
     }
 }
-operations()
+// operations()
 
 
 
