@@ -1,4 +1,4 @@
-const fs = import('fs');
+import fs from "fs";
 
 export default class ProductManager{
 
@@ -156,69 +156,3 @@ export default class ProductManager{
         }
     }
 }
-
-
-// ################################################### TESTING ########################################################################
-
-const operations = async ()=>{
-    try {
-        // Se creará una instancia de la clase “ProductManager”
-        const manager = new ProductManager("./products.json");
-
-        // Se llamará “getProducts” recién creada la instancia, debe devolver un arreglo vacío []
-        const products = await manager.getProducts();
-        console.log("manager de Productos creado: ", products);
-
-        // Se llamará al método “addProduct” con los campos:
-        // title: “producto prueba”
-        // description: ”Este es un producto prueba”
-        // price: 200,
-        // thumbnail: ”Sin imagen”
-        // code: ”abc123”,
-        // stock: 25
-        const title = "producto prueba"
-        const description = "Este es un producto prueba"
-        const price = 200
-        const thumbnail = "Sin imagen"
-        const code = "abc123"
-        const stock = 25
-
-        await manager.addProduct(title, description, price, thumbnail, code, stock)
-        
-        // El objeto debe agregarse satisfactoriamente con un id generado automáticamente SIN REPETIRSE
-        console.log("Id del producto agregado: ", await manager.getCurrentId())
-
-        // Se llamará el método “getProducts” nuevamente, esta vez debe aparecer el producto recién agregado
-        console.log("Productos agregados: ", await manager.getProducts())
-
-        await manager.addProduct("Producto 2", "Otro producto prueba", 100, "Sin imagen", "abc321", 20);
-        await manager.addProduct("Producto 3", "Otro producto prueba", 300, "Sin imagen", "cba123", 30);
-        console.log("Nuevos Productos agregados: ", await manager.getProducts())
-
-        // Se llamará al método “getProductById” y se corroborará que devuelva el producto con el id especificado, en caso de no 
-        // existir, debe arrojar un error.
-        const producto_buscado = await manager.getProductById(3)
-        console.log("Producto buscado: ", producto_buscado)
-
-        // Se llamará al método “updateProduct” y se intentará cambiar un campo de algún producto, se evaluará que no se elimine 
-        // el id y que sí se haya hecho la actualización.
-        const id = 2
-        const campo = "stock"
-        const nuevo_valor = 150
-        console.log(`Actualizar ${campo} con valor ${nuevo_valor} de Producto Id: ${id}`);
-        await manager.updateProduct(id, campo, nuevo_valor);
-        console.log("Producto actualizado: ", await manager.getProductById(id));
-
-        // Se llamará al método “deleteProduct”, se evaluará que realmente se elimine el producto o que arroje un error en caso de 
-        // no existir.
-        await manager.deleteProduct(3)
-        console.log("Lista de Productos actualizada: ", await manager.getProducts())
-
-    } catch (error) {
-        console.log(error.message);
-    }
-}
-// operations()
-
-
-
